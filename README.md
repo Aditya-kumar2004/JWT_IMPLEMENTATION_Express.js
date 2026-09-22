@@ -190,40 +190,29 @@ Access a protected endpoint using the Bearer token received from `/login`.
 
 ---
 
-## 🧪 Testing with cURL & Postman
+## 🧪 Testing with Postman
 
-### Option A: Using cURL in Terminal
-
-#### 1. Login to get a token:
-```bash
-curl -X POST http://localhost:3000/login \
-  -H "Content-Type: application/json" \
-  -d "{\"username\": \"Aditya\", \"password\": \"qwertyuiop\"}"
-```
-
-#### 2. Access the protected `/home` route:
-```bash
-curl -X GET http://localhost:3000/home \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
+### 1. Login Request
+1. Set HTTP method to `POST`.
+2. Enter URL: `http://localhost:3000/login`.
+3. Go to the **Body** tab → select **raw** → choose **JSON**.
+4. Paste the credentials JSON and click **Send**:
+   ```json
+   {
+     "username": "Aditya",
+     "password": "qwertyuiop"
+   }
+   ```
+5. Copy the `token` string from the JSON response.
 
 ---
 
-### Option B: Using Postman
-
-1. **Login Request**:
-   - Set method to `POST`.
-   - Enter URL: `http://localhost:3000/login`.
-   - Go to the **Body** tab → select **raw** → choose **JSON**.
-   - Paste the credentials JSON and click **Send**.
-   - Copy the `token` string from the response.
-
-2. **Protected Route Request**:
-   - Open a new tab and set method to `GET`.
-   - Enter URL: `http://localhost:3000/home`.
-   - Go to the **Authorization** tab → Select **Bearer Token** in the dropdown.
-   - Paste the copied token in the **Token** field.
-   - Click **Send** to see your decoded user data.
+### 2. Protected Route Request (`/home`)
+1. Open a new tab and set HTTP method to `GET`.
+2. Enter URL: `http://localhost:3000/home`.
+3. Go to the **Authorization** tab → Select **Bearer Token** from the type dropdown.
+4. Paste the copied token into the **Token** field.
+5. Click **Send** to view your decoded user data.
 
 ---
 
